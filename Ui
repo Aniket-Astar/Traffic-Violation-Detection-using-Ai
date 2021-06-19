@@ -1,0 +1,54 @@
+from tkinter import *
+import os 
+from tkinter import messagebox
+from PIL import ImageTk, Image
+
+import time
+#from PIL import Image
+root = Tk()
+root.title("Traffic Violation Detection")
+root.geometry("746x900+0+0")
+root.resizable(False, False)
+filename = PhotoImage(file = "back.png")
+background_label = Label(root, image=filename)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+##Heading
+
+#label_1 = Label(root, text = "Enter the word to analyse", font = ("Arial Black", 15, "bold"),bg="black", fg = "red").place(x = 90, y = 300)
+label_2 = Label(root,text="Traffic Violation Detection System",font=("Ubuntu",20,"italic"),fg='yellow',bg ='black').pack()
+
+word = StringVar()
+query = StringVar()
+
+#entry_1 = Entry(root,textvariable = word,font=("Courier",15,"bold italic"), width = 30, bg = "lightgreen", fg = "black").place(x = 400, y =300)
+
+def do_it():
+    #os.system('cd .. && (python3 lpav5.py &) && exit')
+    os.system('python speed_check.py')
+def intro():
+    os.system('python Vehicle_detection_main.py')
+def termi():
+    pt.hotkey('F12')
+    time.sleep(0.5)
+    pt.typewrite('lpa')
+    pt.hotkey('return')
+    pt.hotkey('F12')
+    root.destroy()
+
+intro=Button(root,text="Detect Vehicles",font=("Ubuntu",14,"bold"),width=15,height=2,bg="black",fg="yellow",command=intro).place(x=300,y=320)
+#submitWord = Button(root, text = "Detect Speed",font=("Ubuntu",14,"bold"),width = 15, height = 2,bg = "black", fg = "green", command = do_it).place(x = 300, y = 400)
+stop=Button(root,text="STOP",font=("Ubuntu",14,"bold"),width=10,height=2,bg="black",fg="red",command=root.destroy).place(x=329,y=400)
+
+
+path="logo.png"
+
+img = ImageTk.PhotoImage(Image.open(path))
+#img = Image.resize((250, 250), Image.ANTIALIAS)
+panel = Label(root, image = img,borderwidth=0).pack()
+
+#label_3 = Label(root,text="Traffic Violation Detection System",font=("verdana",15,"bold italic"),fg='#f51deb',bg ='black').pack()
+root.configure(background = 'black')
+label_4= Label(root, text = "Project by- XYZ", font = ("Arial Black", 15, "bold"),bg="black", fg = "red").place(x = 50, y = 850)
+
+root.mainloop()
